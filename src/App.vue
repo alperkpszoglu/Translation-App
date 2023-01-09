@@ -1,26 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <h1 class="text-center">Vue Translator</h1>
+    <h5 class="text-center">Vue.js ile Translator</h5>
+    <br />
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <Translate @translateTextEvent="translateTextEventHandler" />
+        <h3 class="text-success text-center">{{ translateText }}</h3>
+        <History />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import History from './components/HistoryComponent.vue';
+import Translate from './components/TranslateComponent.vue';
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    History,
+    Translate,
+  },
+  data() {
+    return {
+      translateText: '',
+    };
+  },
+  methods: {
+    translateTextEventHandler(_translateText) {
+      this.translateText = _translateText;
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  background-color: rgb(216, 216, 216);
 }
 </style>
