@@ -1,10 +1,10 @@
 <template>
-  <div class="history">
+  <div class="wrapper">
     <h3>Arama Geçmişi</h3>
     <ul class="list-group text-left" v-for="el in history" :key="el.translateText">
-      <li class="list-group-item">
+      <li class="list-item-custom mt-3">
         <div>
-          <strong>{{ el.from }} => {{ el.to }}</strong>
+          <strong>{{ el.from }} <i class="fa-sharp fa-solid fa-arrow-right"></i> {{ el.to }}</strong>
         </div>
         <br />
         <div>
@@ -32,4 +32,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+body {
+  overflow-y: visible;
+}
+
+.list-item-custom {
+  border-top: 1px solid rgb(190, 190, 190);
+  list-style-type: none;
+  padding-top: 0.75rem;
+}
+.list-group:last-child {
+  border-bottom: 1px solid rgb(190, 190, 190);
+  border-radius: 0;
+  padding-bottom: 0.75rem;
+}
+</style>

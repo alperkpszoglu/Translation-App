@@ -1,5 +1,8 @@
 <template>
-  <form class="well" @submit.prevent="OnTranslate">
+  <form class="wrapper" @submit.prevent="OnTranslate">
+    <select class="form-control mb-3" v-model="translateTo">
+      <option v-for="(value, key) in languages[0]" :value="key" :key="value.name">{{ value.name }}</option>
+    </select>
     <textarea
       style="resize: none"
       cols="30"
@@ -8,15 +11,12 @@
       placeholder="Çevirmek istediğiniz kelime/cümle yazınız."
       v-model="translateText"
     ></textarea>
-    <select class="form-control" v-model="translateTo">
-      <option v-for="(value, key) in languages[0]" :value="key" :key="value.name">{{ value.name }}</option>
-    </select>
     <br />
     <div class="text-left" v-if="translateFrom">
       <strong>Tespit Edilen Dil : {{ this.languages[0][translateFrom].name }} </strong>
     </div>
     <br />
-    <button type="submit" class="btn btn-primary btn-block">Çevir Gelsin!</button>
+    <button type="submit" class="btn btn-dark float-end"><i class="fa fa-globe" aria-hidden="true"></i> Çevir</button>
   </form>
 </template>
 
@@ -95,5 +95,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
